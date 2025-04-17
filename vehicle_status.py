@@ -34,8 +34,17 @@ def main():
     st.title("Vehicle Tracker")
     vehicle_number = st.text_input("Vehicle Number")
     result = data[data["Vehicle Number"]==vehicle_number]
-    if len(result)>0:
-        st.write(result)
+    result = result.reset_index(drop=True)
+
+    if vehicle_number:
+
+        if not result.empty:
+            result = result.T
+            result.columns=['']
+            st.subheader("Vehicle Status")
+            st.dataframe(result)  # Transposed display
+        else:
+            st.warning("No matching vehicle found.")
 
     
 
