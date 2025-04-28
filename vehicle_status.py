@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Configuration
 st.set_page_config(
-    page_title="Vehicle Tracking Dashboard",
+    page_title="IBL Trackmate",
     page_icon="🚚",
     layout="wide"
 )
@@ -33,7 +33,7 @@ def main():
     data = pd.DataFrame(data_json)
     st.title("Vehicle Tracker")
     vehicle_number = st.text_input("Vehicle Number")
-    result = data[data["Vehicle Number"]==vehicle_number]
+    result = data[data["Vehicle_Number"]==vehicle_number]
     result = result.reset_index(drop=True)
 
     if vehicle_number:
