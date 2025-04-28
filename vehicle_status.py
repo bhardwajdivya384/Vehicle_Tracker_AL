@@ -31,7 +31,7 @@ def get_all_records():
 def main():
     data_json = get_all_records()
     data = pd.DataFrame(data_json)
-    st.title("Vehicle Tracker")
+    st.title("IBL Trackmate")
     vehicle_number = st.text_input("Vehicle Number")
     result = data[data["Vehicle_Number"]==vehicle_number]
     result = result.reset_index(drop=True)
@@ -42,7 +42,7 @@ def main():
             result = result.T
             result.columns=['']
             st.subheader("Vehicle Status")
-            st.dataframe(result)  # Transposed display
+            st.table(result) # Transposed display
         else:
             st.warning("No matching vehicle found.")
 
